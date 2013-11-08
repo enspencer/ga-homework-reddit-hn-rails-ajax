@@ -1,0 +1,3 @@
+$('#new_post_form').remove();
+$('#new_post').show();
+$('#posts').append("<li>Title: <%= @post.title %>, URL: <%= @post.url %>, Body: <%= @post.body %></li>");

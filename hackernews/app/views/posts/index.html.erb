@@ -1,35 +1,17 @@
 <h1>Listing posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th>Body</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.url %></td>
-        <td><%= post.body %></td>
-        <td><%= post.upvotes %></td>
-        <td><%= post.downvotes %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<ul id='posts'>
+  <% @posts.each do |post| %>
+    <li>Title: <%= post.title %>, URL: <%= post.url %>, Body: <%= post.body %> | Upvotes: <%= post.upvotes %> Downvotes: <%= post.downvotes %> | 
+    <%= link_to 'Upvote', upvote_path %> <%= link_to 'Downvote' %>|
+    <%= link_to 'Edit', edit_post_path(post), id: 'edit_post', remote: true %> | 
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, id: 'delete_post', remote: true %></li>
     <% end %>
-  </tbody>
-</table>
 
-<br>
+</ul>
 
-<%= link_to 'New Post', new_post_path %>
+<%#= link_to 'Show', post %>
+
+
+
+<%= link_to 'New Post', new_post_path, id: 'new_post', remote: true %>
