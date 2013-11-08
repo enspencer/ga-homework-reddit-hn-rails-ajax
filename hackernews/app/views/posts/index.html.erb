@@ -3,7 +3,8 @@
 <ul id='posts'>
   <% @posts.each do |post| %>
     <li>Title: <%= post.title %>, URL: <%= post.url %>, Body: <%= post.body %> | Upvotes: <%= post.upvotes %> Downvotes: <%= post.downvotes %> | 
-    <%= link_to 'Upvote', upvote_path %> <%= link_to 'Downvote' %>|
+    <a href='upvote/<%= post.id %>'>Upvote</a> 
+    <%= link_to 'Downvote' %>|
     <%= link_to 'Edit', edit_post_path(post), id: 'edit_post', remote: true %> | 
     <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, id: 'delete_post', remote: true %></li>
     <% end %>
